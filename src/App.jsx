@@ -1,7 +1,9 @@
-import './App.css'
+import styles from "./app.module.css";
+import "./App.css";
+import CommentsDashboard from "./commentsDashboard/";
 
-function App() {
+const App = () => {
+  return <CommentsDashboard />;
+};
 
-}
-
-export default App
+export default App;
