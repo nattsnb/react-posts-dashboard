@@ -4,14 +4,15 @@ const ButtonStateClassArgument = {
   active: styles.activeButton,
   inactive: styles.inactiveButton,
 };
-const UserButton = ({ userName, isActive }) => {
+const UserButton = ({ userId, userName, activeUser, newActiveUser }) => {
   return (
     <button
       className={
-        isActive
+        activeUser === userId
           ? ButtonStateClassArgument.active
           : ButtonStateClassArgument.inactive
       }
+      onClick={() => newActiveUser(userId)}
     >
       {userName}
     </button>
