@@ -24,7 +24,6 @@ const CommentsDashboard = () => {
 
   const newActiveUser = (userId) => {
     setActiveUser(userId);
-    console.log(userId);
   };
 
   return (
@@ -44,7 +43,11 @@ const CommentsDashboard = () => {
               ></UserButton>
             ))}
           </div>
-          <div className={styles.postsList}></div>
+          {activeUser && (
+            <div className={styles.postsList}>
+              <PostsList activeUser={activeUser} />
+            </div>
+          )}
         </div>
       )}
     </>
