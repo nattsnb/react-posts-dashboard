@@ -1,5 +1,5 @@
 import styles from "./postsList.module.css";
-import PostTitle from "../postTitle/PostTitle.jsx";
+import PostTitle from "../postTitle/";
 
 const PostsList = () => {};
 

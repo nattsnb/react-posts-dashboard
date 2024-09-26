@@ -1,7 +1,8 @@
 import styles from "./commentsDashboard.module.css";
-import UserButton from "../userButton/UserButton.jsx";
-import PostsList from "../postsList/PostsList.jsx";
+import UserButton from "../userButton/";
+import PostsList from "../postsList/";
 import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
 
 const useFetchedUsers = () => {
   const [users, setUsers] = useState(null);
@@ -20,12 +21,26 @@ const useFetchedUsers = () => {
 
 const CommentsDashboard = () => {
   const { users, isLoading } = useFetchedUsers();
-  console.log(users);
+  const [activeUser, setActiveUser] = useState(false);
   return (
-    <div>
-      <div className={styles.buttonsRow}></div>
-      <div className={styles.postsList}></div>
-    </div>
+    <>
+      <h1>Posts List</h1>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && (
+        <div>
+          <div className={styles.buttonsRow}>
+            {users.map((user) => (
+              <UserButton
+                key={uuid()}
+                userName={user.username}
+                isActive={false}
+              ></UserButton>
+            ))}
+          </div>
+          <div className={styles.postsList}></div>
+        </div>
+      )}
+    </>
   );
 };
 

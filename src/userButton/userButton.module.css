@@ -1,0 +1,8 @@
+.activeButton {
+  font-size: 15px;
+  background-color: red;
+}
+
+.inactiveButton {
+  font-size: 15px;
+}
