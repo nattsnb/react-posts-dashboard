@@ -9,6 +9,7 @@ const useFetchedPhotos = (userId) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true)
     if (userId) {
       fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
         .then((response) => response.json())
