@@ -2,10 +2,11 @@ import styles from "./commentsDashboard.module.css";
 import PostsList from "../postsList/";
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup } from "@mui/material";
+import PhotosList from "../photosList/index.jsx";
 
 const DisplayMode = {
-  posts: "posts",
-  photos: "photos",
+  posts: "Browse posts:",
+  photos: "Browse photos:",
 };
 
 const useFetchedUsers = () => {
@@ -59,7 +60,11 @@ const CommentsDashboard = () => {
         </Button>
       </div>
 
-      <h1>Posts List</h1>
+      <h1>
+        {displayMode === DisplayMode.posts
+          ? DisplayMode.posts
+          : DisplayMode.photos}
+      </h1>
       {isLoading && <p>Loading...</p>}
       {!isLoading && (
         <div>
@@ -76,12 +81,14 @@ const CommentsDashboard = () => {
             ))}
           </ButtonGroup>
           {activeUser && displayMode === DisplayMode.posts && (
-            <div className={styles.postsList}>
+            <div>
               <PostsList activeUser={activeUser} />
             </div>
           )}
           {activeUser && displayMode === DisplayMode.photos && (
-            <div className={styles.postsList}>Photos Placeholder</div>
+            <div>
+              <PhotosList activeUser={activeUser} />
+            </div>
           )}
         </div>
       )}
