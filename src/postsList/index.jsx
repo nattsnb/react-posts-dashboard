@@ -1,5 +1,4 @@
 import styles from "./postsList.module.css";
-import PostTitle from "../postTitle/";
 import { useEffect, useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";

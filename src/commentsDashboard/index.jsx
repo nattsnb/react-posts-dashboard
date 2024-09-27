@@ -1,11 +1,7 @@
 import styles from "./commentsDashboard.module.css";
-import UserButton from "../userButton/";
 import PostsList from "../postsList/";
 import { useEffect, useState } from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import { Box } from "@mui/material";
+import { Button, ButtonGroup } from "@mui/material";
 
 const useFetchedUsers = () => {
   const [users, setUsers] = useState(null);
@@ -36,17 +32,18 @@ const CommentsDashboard = () => {
       {isLoading && <p>Loading...</p>}
       {!isLoading && (
         <div>
-          <div className={styles.buttonsRow}>
+          <ButtonGroup>
             {users.map((user) => (
-              <UserButton
+              <Button
                 key={user.id}
-                userId={user.id}
-                userName={user.username}
-                activeUser={activeUser}
-                newActiveUser={newActiveUser}
-              ></UserButton>
+                variant={activeUser === user.id ? "contained" : "outlined"}
+                color={activeUser === user.id ? "success" : ""}
+                onClick={() => newActiveUser(user.id)}
+              >
+                {user.username}
+              </Button>
             ))}
-          </div>
+          </ButtonGroup>
           {activeUser && (
             <div className={styles.postsList}>
               <PostsList activeUser={activeUser} />
