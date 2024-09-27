@@ -1,15 +1,11 @@
-import styles from "./photosList.module.css";
 import { useEffect, useState } from "react";
-import List from "@mui/material/List";
-import { ListItemText, ListSubheader } from "@mui/material";
-import ListItem from "@mui/material/ListItem";
 
 const useFetchedPhotos = (userId) => {
   const [photos, setPhotos] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     if (userId) {
       fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
         .then((response) => response.json())

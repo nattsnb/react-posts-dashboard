@@ -1,4 +1,3 @@
-import styles from "./commentsDashboard.module.css";
 import PostsList from "../postsList/";
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup } from "@mui/material";

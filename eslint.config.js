@@ -18,6 +18,8 @@ export default [
       "no-unused-vars": "error",
       "no-undef": "error",
       "react-hooks/exhaustive-deps": "error",
+      "react/react-in-jsx-scope": 0,
+      "react/prop-types": 0,
     },
   },
 ];
