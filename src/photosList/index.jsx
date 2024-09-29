@@ -20,7 +20,7 @@ const useFetchedPhotos = (userId) => {
           console.log("error fetching data", error);
         })
         .finally(() => setIsLoading(false));
-    }
+    } else { setIsLoading(false)}
   }, [userId]);
 
   return { photos, isLoading };
