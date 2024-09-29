@@ -58,16 +58,16 @@ export const CommentsDashboard = () => {
               </Button>
             ))}
           </ButtonGroup>
-          {activeUser && displayMode === DisplayMode.posts && (
-            <div>
-              <PostsList activeUser={activeUser} />
-            </div>
-          )}
-          {activeUser && displayMode === DisplayMode.photos && (
-            <div>
-              <PhotosList activeUser={activeUser} />
-            </div>
-          )}
+          {activeUser &&
+            (displayMode === DisplayMode.posts ? (
+              <div>
+                <PostsList activeUser={activeUser} />
+              </div>
+            ) : (
+              <div>
+                <PhotosList activeUser={activeUser} />
+              </div>
+            ))}
         </div>
       )}
     </>

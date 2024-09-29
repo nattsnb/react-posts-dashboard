@@ -29,8 +29,9 @@ const PhotosList = ({ activeUser }) => {
   const { photos, isLoading } = useFetchedPhotos(activeUser);
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
         <div>
           {photos.map((photo) => (
             <img key={photo.id} src={photo.url} alt={photo.title} />

@@ -23,8 +23,9 @@ const PostsList = ({ activeUser }) => {
   const { posts, isLoading } = useFetchedPosts(activeUser);
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
         <List>
           {posts.map((post) => (
             <li key={post.id}>
