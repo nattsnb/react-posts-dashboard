@@ -14,7 +14,7 @@ export const CommentsDashboard = () => {
     isLoading,
     activeUser,
     displayMode,
-    newActiveUser,
+    setNewActiveUser,
     switchDisplayModeToPhotos,
     switchDisplayModeToPosts,
   } = useCommentsDashboard();
@@ -52,7 +52,7 @@ export const CommentsDashboard = () => {
                 key={user.id}
                 variant={activeUser === user.id ? "contained" : "outlined"}
                 color={activeUser === user.id ? "success" : ""}
-                onClick={() => newActiveUser(user.id)}
+                onClick={() => setNewActiveUser(user.id)}
               >
                 {user.username}
               </Button>

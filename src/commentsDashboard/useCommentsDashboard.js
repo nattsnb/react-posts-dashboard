@@ -25,7 +25,7 @@ export const useCommentsDashboard = () => {
   const [activeUser, setActiveUser] = useState(null);
   const [displayMode, setDisplayMode] = useState(DisplayMode.posts);
 
-  const newActiveUser = (userId) => {
+  const setNewActiveUser = (userId) => {
     setActiveUser(userId);
   };
 
@@ -42,7 +42,7 @@ export const useCommentsDashboard = () => {
     isLoading,
     activeUser,
     displayMode,
-    newActiveUser,
+    setNewActiveUser,
     switchDisplayModeToPhotos,
     switchDisplayModeToPosts,
   };
