@@ -1,5 +1,5 @@
 import PostsList from "../postsList/";
-import { useEffect, useState } from "react";
+import { useCommentsDashboard } from "./useCommentsDashboard.js";
 import { Button, ButtonGroup } from "@mui/material";
 import PhotosList from "../photosList/index.jsx";
 
@@ -8,37 +8,16 @@ const DisplayMode = {
   photos: "Browse photos:",
 };
 
-const useFetchedUsers = () => {
-  const [users, setUsers] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data))
-      .catch((error) => {
-        console.log("error fetching data", error);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
-  return { users, isLoading };
-};
-
-const CommentsDashboard = () => {
-  const { users, isLoading } = useFetchedUsers();
-  const [activeUser, setActiveUser] = useState(null);
-  const [displayMode, setDisplayMode] = useState(DisplayMode.posts);
-
-  const newActiveUser = (userId) => {
-    setActiveUser(userId);
-  };
-
-  const switchDisplayModeToPhotos = () => {
-    setDisplayMode(DisplayMode.photos);
-  };
-
-  const switchDisplayModeToPosts = () => {
-    setDisplayMode(DisplayMode.posts);
-  };
+export const CommentsDashboard = () => {
+  const {
+    users,
+    isLoading,
+    activeUser,
+    displayMode,
+    newActiveUser,
+    switchDisplayModeToPhotos,
+    switchDisplayModeToPosts,
+  } = useCommentsDashboard();
 
   return (
     <>
@@ -94,5 +73,3 @@ const CommentsDashboard = () => {
     </>
   );
 };
-
-export default CommentsDashboard;
