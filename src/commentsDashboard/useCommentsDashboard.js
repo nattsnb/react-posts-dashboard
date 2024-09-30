@@ -5,9 +5,12 @@ const DisplayMode = {
   photos: "Browse photos:",
 };
 
-const useFetchedUsers = () => {
+export const useCommentsDashboard = () => {
+  const [activeUser, setActiveUser] = useState(null);
+  const [displayMode, setDisplayMode] = useState(DisplayMode.posts);
   const [users, setUsers] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
@@ -17,26 +20,16 @@ const useFetchedUsers = () => {
       })
       .finally(() => setIsLoading(false));
   }, []);
-  return { users, isLoading };
-};
-
-export const useCommentsDashboard = () => {
-  const { users, isLoading } = useFetchedUsers();
-  const [activeUser, setActiveUser] = useState(null);
-  const [displayMode, setDisplayMode] = useState(DisplayMode.posts);
 
   const setNewActiveUser = (userId) => {
     setActiveUser(userId);
   };
-
   const switchDisplayModeToPhotos = () => {
     setDisplayMode(DisplayMode.photos);
   };
-
   const switchDisplayModeToPosts = () => {
     setDisplayMode(DisplayMode.posts);
   };
-
   return {
     users,
     isLoading,

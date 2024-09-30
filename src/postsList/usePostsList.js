@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
-const useFetchedPosts = (userId) => {
+export const useFetchedPosts = (userId) => {
   const [posts, setPosts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     setIsLoading(true);
     if (userId) {
@@ -19,5 +20,3 @@ const useFetchedPosts = (userId) => {
   }, [userId]);
   return { posts, isLoading };
 };
-
-export default useFetchedPosts;

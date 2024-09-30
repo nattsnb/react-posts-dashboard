@@ -60,13 +60,9 @@ export const CommentsDashboard = () => {
           </ButtonGroup>
           {activeUser &&
             (displayMode === DisplayMode.posts ? (
-              <div>
-                <PostsList activeUser={activeUser} />
-              </div>
+              <PostsList activeUser={activeUser} />
             ) : (
-              <div>
-                <PhotosList activeUser={activeUser} />
-              </div>
+              <PhotosList activeUser={activeUser} />
             ))}
         </div>
       )}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFetchedPhotos = (userId) => {
+export const useFetchedPhotos = (userId) => {
   const [photos, setPhotos] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,5 +27,3 @@ const useFetchedPhotos = (userId) => {
 
   return { photos, isLoading };
 };
-
-export default useFetchedPhotos;
