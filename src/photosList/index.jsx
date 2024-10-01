@@ -1,4 +1,4 @@
-import useFetchedPhotos from "./usePhotoList.js";
+import { useFetchedPhotos } from "./usePhotoList.js";
 
 const PhotosList = ({ activeUser }) => {
   const { photos, isLoading } = useFetchedPhotos(activeUser);

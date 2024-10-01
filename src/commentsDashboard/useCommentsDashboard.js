@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { api } from "../shared/api.js";
 
 const DisplayMode = {
   posts: "Browse posts:",
   photos: "Browse photos:",
 };
+
+const { fetchUsers, fetchPosts, fetchPhotos, fetchAlbums } = api;
 
 export const useCommentsDashboard = () => {
   const [activeUser, setActiveUser] = useState(null);
@@ -12,8 +15,7 @@ export const useCommentsDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
+    fetchUsers()
       .then((data) => setUsers(data))
       .catch((error) => {
         console.log("error fetching data", error);

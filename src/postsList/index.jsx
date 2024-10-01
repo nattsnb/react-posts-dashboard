@@ -1,7 +1,7 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { ListItemText, ListSubheader } from "@mui/material";
-import useFetchedPosts from "./usePostsList.js";
+import { useFetchedPosts } from "./usePostsList.js";
 
 const PostsList = ({ activeUser }) => {
   const { posts, isLoading } = useFetchedPosts(activeUser);

@@ -38,13 +38,10 @@ export const CommentsDashboard = () => {
         </Button>
       </div>
 
-      <h1>
-        {displayMode === DisplayMode.posts
-          ? DisplayMode.posts
-          : DisplayMode.photos}
-      </h1>
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && (
+      <h1>{displayMode}</h1>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
         <div>
           <ButtonGroup>
             {users.map((user) => (
