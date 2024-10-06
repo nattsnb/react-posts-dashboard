@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../shared/api.js";
 
-const { fetchUsers, fetchPosts, fetchPhotos, fetchAlbums } = api;
-
 export const useFetchedPosts = (userId) => {
   const [posts, setPosts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +8,8 @@ export const useFetchedPosts = (userId) => {
   useEffect(() => {
     if (userId) {
       setIsLoading(true);
-      fetchPosts(userId)
+      api
+        .fetchPosts(userId)
         .then((data) => setPosts(data))
         .catch((error) => {
           console.log("error fetching data", error);

@@ -6,8 +6,6 @@ const DisplayMode = {
   photos: "Browse photos:",
 };
 
-const { fetchUsers, fetchPosts, fetchPhotos, fetchAlbums } = api;
-
 export const useCommentsDashboard = () => {
   const [activeUser, setActiveUser] = useState(null);
   const [displayMode, setDisplayMode] = useState(DisplayMode.posts);
@@ -15,7 +13,8 @@ export const useCommentsDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchUsers()
+    api
+      .fetchUsers()
       .then((data) => setUsers(data))
       .catch((error) => {
         console.log("error fetching data", error);
