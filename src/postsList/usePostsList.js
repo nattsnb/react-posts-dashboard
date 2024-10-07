@@ -6,16 +6,16 @@ export const useFetchedPosts = (userId) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (userId) {
+    async function getUsersPosts() {
       setIsLoading(true);
-      api
-        .fetchPosts(userId)
-        .then((data) => setPosts(data))
-        .catch((error) => {
-          console.log("error fetching data", error);
-        })
-        .finally(() => setIsLoading(false));
+      try {
+        const postsResponse = await api.fetchPosts(userId);
+        setPosts(postsResponse);
+      } catch (error) {}
+      setIsLoading(false);
     }
+    getUsersPosts();
   }, [userId]);
+
   return { posts, isLoading };
 };

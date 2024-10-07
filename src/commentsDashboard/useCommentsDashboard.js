@@ -13,13 +13,15 @@ export const useCommentsDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    api
-      .fetchUsers()
-      .then((data) => setUsers(data))
-      .catch((error) => {
-        console.log("error fetching data", error);
-      })
-      .finally(() => setIsLoading(false));
+    async function getUsersDetails() {
+      setIsLoading(true);
+      try {
+        const usersResponse = await api.fetchUsers();
+        setUsers(usersResponse);
+      } catch (error) {}
+      setIsLoading(false);
+    }
+    getUsersDetails();
   }, []);
 
   const setNewActiveUser = (userId) => {

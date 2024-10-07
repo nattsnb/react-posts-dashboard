@@ -6,17 +6,16 @@ export const useFetchedPhotos = (userId) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (userId) {
+    async function getUsersPhotos() {
       setIsLoading(true);
-      api
-        .fetchAlbums(userId)
-        .then((albums) => api.fetchPhotos(albums))
-        .then((photos) => setPhotos(photos))
-        .catch((error) => {
-          console.log("error fetching data", error);
-        })
-        .finally(() => setIsLoading(false));
+      try {
+        const albumResponse = await api.fetchAlbums(userId);
+        const photosResponse = await api.fetchPhotos(albumResponse);
+        setPhotos(photosResponse);
+      } catch (error) {}
+      setIsLoading(false);
     }
+    getUsersPhotos();
   }, [userId]);
 
   return { photos, isLoading };
